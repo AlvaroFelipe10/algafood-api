@@ -1,7 +1,6 @@
 package com.algaworks.algafood.domain.model;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +18,7 @@ public class Restaurante {
 	private String nome;
 	
 	@Column(name = "taxa_frete")
-	private BigDecimal taxafrete;
+	private BigDecimal taxaFrete;
 
 	public Long getId() {
 		return id;
@@ -37,17 +36,20 @@ public class Restaurante {
 		this.nome = nome;
 	}
 
-	public BigDecimal getTaxafrete() {
-		return taxafrete;
+	public BigDecimal getTaxaFrete() {
+		return taxaFrete;
 	}
 
-	public void setTaxafrete(BigDecimal taxafrete) {
-		this.taxafrete = taxafrete;
+	public void setTaxaFrete(BigDecimal taxaFrete) {
+		this.taxaFrete = taxaFrete;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
 
 	@Override
@@ -59,7 +61,12 @@ public class Restaurante {
 		if (getClass() != obj.getClass())
 			return false;
 		Restaurante other = (Restaurante) obj;
-		return Objects.equals(id, other.id);
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 	
 }
