@@ -16,9 +16,9 @@ public class EstadoController {
 	
 	@Autowired
 	private EstadoRepository estadoRepository;
-
+	
 	@GetMapping
-	public List<Estado> listar() {
-		return estadoRepository.listar();
+	List<Estado> listar(){
+		return estadoRepository.listar(); 
 	}
 }
