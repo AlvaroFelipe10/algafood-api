@@ -4,18 +4,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.server.ResponseStatusException;
 
-@ResponseStatus(value = HttpStatus.BAD_REQUEST)
-public class NegocioException extends RuntimeException {
+
+public class CozinhaNaoEncontradaException extends EntidadeNaoEncontradaException {
 
 	
 	private static final long serialVersionUID = 1L;
 	
-	public NegocioException(String mensagem) {
+	public CozinhaNaoEncontradaException(String mensagem) {
 		super(mensagem);
+	}
+	
+	public CozinhaNaoEncontradaException(Long cozinhaId) {
+		this(String.format("Não existe um cadastro de cozinha com código %d" , cozinhaId));
 	}
 
 	
-	public NegocioException(String mensagem, Throwable causa) {
-		super(mensagem, causa);
-	}
 }
